@@ -102,15 +102,95 @@
             transform: scale(-1, -1);
         }
 
-        /* Hover effect class for interactive elements */
-        .interactive-hover {
+        /* Photo frames */
+        .photo-frame {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            border: 5px solid white;
+            background: #f0f0f0;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
+            z-index: 10;
         }
 
-        .interactive-hover:hover {
-            transform: scale(1.08) translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        .photo-frame:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            z-index: 20;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Photo frame positions for countdown section */
+        .photo-frame.countdown-tl {
+            top: 10%;
+            left: 5%;
+            transform: rotate(-8deg);
+        }
+
+        .photo-frame.countdown-tr {
+            top: 10%;
+            right: 5%;
+            transform: rotate(8deg);
+        }
+
+        .photo-frame.countdown-bl {
+            bottom: 10%;
+            left: 5%;
+            transform: rotate(8deg);
+        }
+
+        .photo-frame.countdown-br {
+            bottom: 10%;
+            right: 5%;
+            transform: rotate(-8deg);
+        }
+
+        /* Photo frame positions for quotes section */
+        .photo-frame.quote-tl {
+            top: 5%;
+            left: 3%;
+            transform: rotate(-10deg);
+        }
+
+        .photo-frame.quote-tr {
+            top: 5%;
+            right: 3%;
+            transform: rotate(10deg);
+        }
+
+        .photo-frame.quote-bl {
+            bottom: 5%;
+            left: 3%;
+            transform: rotate(10deg);
+        }
+
+        .photo-frame.quote-br {
+            bottom: 5%;
+            right: 3%;
+            transform: rotate(-10deg);
+        }
+
+        /* Placeholder styling for photos */
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffc0e0 0%, #ff69b4 100%);
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
         }
 
         /* Map Section */
@@ -552,6 +632,7 @@
             #countdown { font-size: 40px; }
             .buttons-container { flex-direction: column; gap: 30px; }
             .vine-decoration { width: 120px; height: 120px; }
+            .photo-frame { width: 100px; height: 100px; }
         }
     </style>
 </head>
@@ -590,18 +671,18 @@
                 <path id="connection-line" d=""/>
             </svg>
             
-            <!-- Salt Lake City marker -->
-            <div class="city-marker" id="salt-lake" style="left: 32%; top: 40%;">
+            <!-- Salt Lake City marker - CORRECTED POSITION -->
+            <div class="city-marker" id="salt-lake" style="left: 28%; top: 44%;">
                 <div class="city-label">Salt Lake City</div>
             </div>
             
-            <!-- Chicago marker -->
-            <div class="city-marker" id="chicago" style="left: 62%; top: 36%;">
+            <!-- Chicago marker - CORRECTED POSITION -->
+            <div class="city-marker" id="chicago" style="left: 60%; top: 38%;">
                 <div class="city-label">Chicago</div>
             </div>
             
             <!-- Animated heart (shape, not emoji) -->
-            <div id="heart" style="left: 32%; top: 40%;">
+            <div id="heart" style="left: 28%; top: 44%;">
                 <div class="heart-shape"></div>
             </div>
         </div>
@@ -617,6 +698,27 @@
             <circle cx="100" cy="50" r="12" fill="#81c784" opacity="0.7"/>
             <circle cx="140" cy="65" r="9" fill="#66bb6a" opacity="0.7"/>
         </svg>
+        
+        <!-- Photo frames around countdown (4 photos of you and her together) -->
+        <div class="photo-frame countdown-tl">
+            <img src="images/photo5.jpeg" alt="Us together 1">
+            <!-- Replace with: <img src="YOUR_IMAGE_URL_1" alt="Us together"> -->
+        </div>
+        
+        <div class="photo-frame countdown-tr">
+            <img src="images/photo6.jpeg" alt="Us together 2">
+            <!-- Replace with: <img src="YOUR_IMAGE_URL_2" alt="Us together"> -->
+        </div>
+        
+        <div class="photo-frame countdown-bl">
+            <img src="images/photo7.jpeg" alt="Us together 3">
+            <!-- Replace with: <img src="YOUR_IMAGE_URL_3" alt="Us together"> -->
+        </div>
+        
+        <div class="photo-frame countdown-br">
+            <img src="images/photo8.jpeg" alt="Us together 4">
+            <!-- Replace with: <img src="YOUR_IMAGE_URL_4" alt="Us together"> -->
+        </div>
         
         <div class="countdown-container">
             <div id="countdown">Loading...</div>
@@ -634,6 +736,27 @@
             <circle cx="110" cy="70" r="13" fill="#f06292" opacity="0.6"/>
             <circle cx="150" cy="80" r="10" fill="#f48fb1" opacity="0.6"/>
         </svg>
+        
+        <!-- Photo frames around quotes (4 photos of her) -->
+        <div class="photo-frame quote-tl">
+            <img src="images/photo1.jpeg" alt="Her photo 1">
+            <!-- Replace with: <img src="HER_IMAGE_URL_1" alt="Kaliah"> -->
+        </div>
+        
+        <div class="photo-frame quote-tr">
+            <img src="images/photo2.jpeg" alt="Her photo 2">
+            <!-- Replace with: <img src="HER_IMAGE_URL_2" alt="Kaliah"> -->
+        </div>
+        
+        <div class="photo-frame quote-bl">
+            <img src="images/photo3.jpeg" alt="Her photo 3">
+            <!-- Replace with: <img src="HER_IMAGE_URL_3" alt="Kaliah"> -->
+        </div>
+        
+        <div class="photo-frame quote-br">
+            <img src="images/photo4.jpeg" alt="Her photo 4">
+            <!-- Replace with: <img src="HER_IMAGE_URL_4" alt="Kaliah"> -->
+        </div>
         
         <div class="quotes-container">
             <p class="romantic-text">Miles don't change how sure I am</p>
